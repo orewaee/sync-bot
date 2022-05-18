@@ -1,6 +1,6 @@
 import { updateOneGuild } from "./updateOneGuild";
 
-export async function updateAllGuilds( client ) {
+export function updateAllGuilds( client ) {
     let guilds = client.guilds.cache;
 
     guilds.map( function ( item ) {

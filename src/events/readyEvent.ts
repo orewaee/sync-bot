@@ -3,6 +3,7 @@ import { donorGuildId } from "../../config.json";
 import { ApplicationCommandManager, Client, Collection, Guild, GuildMember } from "discord.js";
 import { updateAllGuilds } from "../utils/updateAllGuilds";
 import { generateInviteLink } from "../utils/generateInviteLink";
+import { createCommands } from "../utils/createCommands";
 import { getTime } from "../utils/getTime";
 import { CallbackError, HydratedDocument } from "mongoose";
 import Member from "../models/Member";
@@ -45,10 +46,7 @@ export async function readyEvent( client: Client ) {
 
     let commands: ApplicationCommandManager = client.application.commands;
 
-    await commands.create( {
-        name: "sync",
-        description: "Sync roles and nicknames from the donor Discord server"
-    } );
+    createCommands( commands );
 
     console.log( "\n[%s] [Log] Sync bot launched. Invitation link: %s", getTime(), generateInviteLink( client ), "\n" );
 }
