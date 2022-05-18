@@ -13,7 +13,13 @@ export async function updateOneGuild( client, guildId ) {
         Member.findOne( { id }, async function ( e, member ) {
             if ( !member ) return;
 
-            if ( member.name != name ) await guildMember.setNickname( member.name );
+            if ( member.name == name ) return;
+
+            try {
+                await guildMember.setNickname( member.name, "Nickname synchronization" );
+            } catch ( e ) {
+                return;
+            }
         } );
     } );
 }

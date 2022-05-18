@@ -7,7 +7,6 @@ interface IOptions {
 
 const options: IOptions = {
     permissions: [
-        Permissions.FLAGS.ADMINISTRATOR,
         Permissions.FLAGS.MANAGE_NICKNAMES,
         Permissions.FLAGS.CHANGE_NICKNAME
     ],

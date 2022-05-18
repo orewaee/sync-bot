@@ -52,15 +52,15 @@ export async function syncCommand( client: Client, interaction, guildId ) {
         updateAllGuilds( client );
 
         return interaction.reply( {
-            content: "Дело сделано",
+            content: "Дело сделано. Если возникли проблемы, то обратитесь к https://t.me/orewaee",
             ephemeral: true
         } );
     }
 
-    updateOneGuild( client, guildId );
+    updateOneGuild( client, guildId ).then( r => console.log( r ) );
 
     interaction.reply( {
-        content: "Дело сделано",
+        content: "Дело сделано. Если ники не изменились, то поставьте роль бота выше других ролей. А если и это не помогло, то обратитесь к https://t.me/orewaee",
         ephemeral: true
     } );
 }
