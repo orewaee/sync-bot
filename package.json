@@ -1,0 +1,31 @@
+{
+    "name": "sync-bot",
+    "version": "1.0.0",
+    "description": "Bot that sync nicknames from a donor Discord server",
+    "main": "main.js",
+    "scripts": {
+        "start": "tsc && node build/main.js",
+        "build": "tsc",
+        "dev": "nodemon src/main.ts"
+    },
+    "keywords": [
+        "discord",
+        "bot",
+        "typescript",
+        "sync"
+    ],
+    "author": "orewaee",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^17.0.31",
+        "nodemon": "^2.0.16",
+        "ts-node": "^10.7.0",
+        "typescript": "^4.6.4"
+    },
+    "dependencies": {
+        "discord.js": "^13.6.0",
+        "dotenv": "^16.0.0",
+        "moment": "^2.29.3",
+        "mongoose": "^6.3.3"
+    }
+}
