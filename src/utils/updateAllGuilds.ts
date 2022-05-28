@@ -1,11 +1,16 @@
-import { updateOneGuild } from "./updateOneGuild";
+import { Guild } from "discord.js";
+import { bot } from "../main";
+import updateOneGuild from "./updateOneGuild";
 
-export function updateAllGuilds( client ) {
-    let guilds = client.guilds.cache;
+// Function to update the names of all members in all guilds
+export default async function updateAllGuilds() {
+    // Getting a variable with all guilds
+    const guilds = bot.guilds.cache;
 
-    guilds.map( function ( item ) {
-        let guildId = item.id;
+    guilds.map( function ( guild: Guild ) {
+        let guildId = guild.id;
 
-        updateOneGuild( client, guildId );
+        updateOneGuild( guildId );
     } );
+
 }
