@@ -6,10 +6,12 @@ import updateOneGuildOld from "../utils/updateOneGuild";
 export default async function sync( interaction ) {
     const guild = interaction.guild;
 
-    if ( guild.id != donorGuildId ) return await updateOneGuildOld( guild );
-
-    await updateDatabase();
-    await updateAllGuilds();
+    if ( guild.id == donorGuildId ) {
+        await updateDatabase();
+        await updateAllGuilds();
+    } else {
+        await updateOneGuildOld( guild );
+    }
 
     interaction.reply( {
         content: "It is done",

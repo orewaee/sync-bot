@@ -1,11 +1,20 @@
 import { Interaction } from "discord.js";
 import sync from "../commands/sync";
+import info from "../commands/info";
 
-export default function interactionCreate( interaction: Interaction ) {
+export default async function interactionCreate( interaction: Interaction ) {
     if ( !interaction.isCommand() ) return;
 
     const { commandName } = interaction;
 
-    if ( commandName == "sync" ) return sync( interaction );
+    switch ( commandName ) {
+        case "sync":
+            await sync( interaction );
+            break;
 
+        case "info":
+            info( interaction );
+            break;
+
+    }
 }

@@ -4,7 +4,8 @@ import updateDatabase from "../utils/updateDatabase";
 import updateAllGuilds from "../utils/updateAllGuilds";
 
 export default async function guildMemberUpdate( member: GuildMember ) {
-    if ( member.guild.id == donorGuildId ) await updateDatabase();
-
-    await updateAllGuilds();
+    if ( member.guild.id == donorGuildId ) {
+        await updateDatabase();
+        await updateAllGuilds();
+    }
 }

@@ -1,6 +1,6 @@
 import { donorGuildId } from "../../config.json";
 import { Guild, GuildMember } from "discord.js";
-import { database } from "../main";
+import { database, logger } from "../main";
 import getMemberId from "./getMemberId";
 import getMemberName from "./getMemberName";
 
@@ -26,6 +26,10 @@ export default async function updateOneGuild( guild: Guild ) {
         if ( await database.compareMemberNames( id, name ) ) return;
 
         // If the first two checks fail, then the name of the member in the guild is updated
-        await guildMember.setNickname( await database.getMemberName( id ), "Nickname syncs" );
+        try {
+            await guildMember.setNickname( await database.getMemberName( id ), "Nickname syncs" );
+        } catch ( e ) {
+            logger.warn( "Name change error" )
+        }
     } );
 }
