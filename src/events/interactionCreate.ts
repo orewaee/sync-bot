@@ -6,6 +6,6 @@ export default function interactionCreate( interaction: Interaction ) {
 
     const { commandName } = interaction;
 
-    if ( commandName == "sync" ) return sync( interaction.guild );
+    if ( commandName == "sync" ) return sync( interaction );
 
 }
