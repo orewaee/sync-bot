@@ -1,36 +1,31 @@
 import { donorGuildId } from "../../config.json";
 import { Guild, GuildMember } from "discord.js";
-import { database, bot } from "../main";
+import { database } from "../main";
 import getMemberId from "./getMemberId";
 import getMemberName from "./getMemberName";
 
-// The function of updating the names of all members in the same guild
-export default async function updateOneGuild( guildId: string ) {
-    if ( guildId == donorGuildId ) return;
+// Name update function in one guild
+export default async function updateOneGuild( guild: Guild ) {
+    // If the guild is a donor, then nothing happens
+    if ( guild.id == donorGuildId ) return;
 
-    const
-        guild = bot.guilds.cache.get( guildId ),
-        guildMembers = await guild.members.fetch(),
-        guildOwnerId = guild.ownerId;
-
-    /*
-    const
-        guildMembers = guild.members.cache,
-        guildOwnerId = guild.ownerId;
-    */
+    const guildMembers = await guild.members.fetch();
 
     guildMembers.map( async function ( guildMember: GuildMember ) {
         const
-            memberId: string = getMemberId( guildMember ),
-            memberName: string = getMemberName( guildMember );
+            id: string = getMemberId( guildMember ),
+            name: string = getMemberName( guildMember );
 
-        if ( guildOwnerId == memberId ) return;
+        // You can not change the nickname of the owner of the guild discord
+        if ( guild.ownerId == id ) return;
 
-        if ( !await database.checkMember( { id: memberId } ) ) return;
+        // If the member is not in the database, then nothing happens
+        if ( !await database.checkMember( { id } ) ) return;
 
-        if ( await database.compareMemberNames( memberId, memberName ) ) return;
+        // If the name in the guild matches the name from the database, then nothing happens
+        if ( await database.compareMemberNames( id, name ) ) return;
 
-        await guildMember.setNickname( await database.getMemberName( memberId ), "Nickname syncs" );
+        // If the first two checks fail, then the name of the member in the guild is updated
+        await guildMember.setNickname( await database.getMemberName( id ), "Nickname syncs" );
     } );
-
 }

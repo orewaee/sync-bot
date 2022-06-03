@@ -1,11 +1,10 @@
+import { donorGuildId } from "../../config.json";
+import { GuildMember } from "discord.js";
 import updateDatabase from "../utils/updateDatabase";
 import updateAllGuilds from "../utils/updateAllGuilds";
 
-export default async function guildMemberAdd() {
-    // Update records in the database
-    await updateDatabase();
+export default async function guildMemberAdd( member: GuildMember ) {
+    if ( member.guild.id == donorGuildId ) await updateDatabase();
 
-    // Update names in all guilds
     await updateAllGuilds();
-
 }

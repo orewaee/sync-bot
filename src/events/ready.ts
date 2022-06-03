@@ -4,10 +4,7 @@ import updateAllGuilds from "../utils/updateAllGuilds";
 import generateInvitationLink from "../utils/generateInvitationLink";
 
 export default async function ready() {
-    // Update records in the database
     await updateDatabase();
-
-    // Update names in all guilds
     await updateAllGuilds();
 
     await bot.registerCommands();

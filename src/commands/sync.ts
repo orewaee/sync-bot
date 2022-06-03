@@ -1,17 +1,11 @@
 import { donorGuildId } from "../../config.json";
 import updateDatabase from "../utils/updateDatabase";
 import updateAllGuilds from "../utils/updateAllGuilds";
-import updateOneGuild from "../utils/updateOneGuild";
+import updateOneGuildOld from "../utils/updateOneGuild";
 
-export default async function sync( guildId ) {
-    if ( guildId == donorGuildId ) {
-        // Update records in the database
-        await updateDatabase();
+export default async function sync( guild ) {
+    if ( guild.id != donorGuildId ) return await updateOneGuildOld( guild );
 
-        // Update names in all guilds
-        await updateAllGuilds();
-    } else {
-        await updateOneGuild( guildId );
-    }
-
+    await updateDatabase();
+    await updateAllGuilds();
 }

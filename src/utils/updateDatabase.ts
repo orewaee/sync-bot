@@ -6,21 +6,22 @@ import getMemberName from "./getMemberName";
 
 // Function to update records in database based on donor guild
 export default async function updateDatabase() {
-    // Getting a variable with donor guild members
     const members = await bot.guilds.cache.get( donorGuildId ).members.fetch();
 
     members.map( async function ( member: GuildMember ) {
-        // Getting the id and name of a guild member
         const
             id: string = getMemberId( member ),
             name: string = getMemberName( member );
 
+        // If the member is not in the database, then it is added to it
         if ( !await database.checkMember( { id } ) ) return await database.addMember( id, name );
 
+        // If the name in the guild matches the name from the database, then nothing happens
         if ( await database.compareMemberNames( id, name ) ) return;
 
+        // If the first two checks fail, then the participant name in the database is updated
         await database.updateMemberName( id, name );
     } );
 
-    await database.removeUnusedEntries( members );
+    // Remove unused entries
 }
