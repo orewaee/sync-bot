@@ -23,5 +23,5 @@ export default async function updateDatabase() {
         await database.updateMemberName( id, name );
     } );
 
-    // Remove unused entries
+    await database.removeUnusedEntries( members );
 }
