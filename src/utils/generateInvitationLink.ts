@@ -1,6 +1,7 @@
 import { Permissions } from "discord.js";
 import { bot } from "../main";
 
+// Function to create an invitation link
 export default function generateInvitationLink(): string {
     return bot.generateInvite( {
         permissions: [

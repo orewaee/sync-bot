@@ -55,6 +55,4 @@ export default class Logger {
 
         console.log( "%s %s", prefix, message );
     }
-
-    // change, add, remove
 }
