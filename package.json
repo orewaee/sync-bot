@@ -1,6 +1,6 @@
 {
     "name": "sync-bot",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "description": "Bot that synchronizes names with the donor Discord guild",
     "main": "main.js",
     "scripts": {
