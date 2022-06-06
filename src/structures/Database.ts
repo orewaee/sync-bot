@@ -35,7 +35,7 @@ export default class Database {
 
         await newMemberDocument.save();
 
-        logger.add( `🟢 Member ${ name } with id ${ id } was successfully added to the database` );
+        logger.add( `Member ${ name } with id ${ id } was successfully added to the database` );
     }
 
     async removeMember( id: string, name: string ) {
@@ -58,7 +58,7 @@ export default class Database {
         await memberDocument.save();
 
 
-        logger.change( `🟡 Principal name ${ oldName } with id ${ id } was successfully changed in the database to ${ newName }` );
+        logger.change( `Principal name ${ oldName } with id ${ id } was successfully changed in the database to ${ newName }` );
 
     }
 
