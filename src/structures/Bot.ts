@@ -30,7 +30,7 @@ export default class Bot extends Client {
     // Method that registers all events
     registerEvents() {
         // An event that fires when the bot starts
-        this.on( "ready", ready ); // Made
+        this.on( "ready", ready );
 
         // Event that fires when a member joins a guild
         this.on( "guildMemberAdd", function ( member: GuildMember ) {
