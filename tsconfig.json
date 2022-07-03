@@ -1,11 +1,25 @@
 {
+    "include": [ "src/**/*" ],
+    "exclude": [ "node_modules" ],
     "compilerOptions": {
+        // Temporarily
+        "allowUnreachableCode": true,
+        "allowUnusedLabels": true,
+
+        // Modules
         "module": "CommonJS",
-        "esModuleInterop": true,
-        "target": "ESNext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
+
+        // Emit
+        "outDir": "dist",
+        "removeComments": true,
         "sourceMap": true,
-        "outDir": "dist"
+
+        // Interop Constraints
+        "esModuleInterop": true,
+
+        // Language and Environment
+        "target": "ESNext"
     }
 }
