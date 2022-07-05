@@ -1,7 +1,7 @@
 {
     "name": "sync-bot",
     "version": "3.0.0",
-    "description": "Bot for Discord with source code. Use synchronization of names of guild members in accordance with the donor guild.",
+    "description": "An open source Discord bot. Use synchronization of names of guild members in accordance with the donor guild.",
     "homepage": "https://github.com/orewaee/sync-bot",
     "license": "MIT",
     "author": "orewaee <orewaee@gmail.com>",
@@ -20,7 +20,9 @@
     },
     "dependencies": {
         "discord.js": "^13.8.1",
-        "env": "^0.0.2"
+        "dotenv": "^16.0.1",
+        "moment": "^2.29.3",
+        "mongoose": "^6.4.2"
     },
     "private": true
 }

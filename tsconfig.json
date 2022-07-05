@@ -1,5 +1,5 @@
 {
-    "include": [ "src/**/*" ],
+    "include": [ "src" ],
     "exclude": [ "node_modules" ],
     "compilerOptions": {
         // Temporarily
@@ -13,13 +13,16 @@
 
         // Emit
         "outDir": "dist",
-        "removeComments": true,
-        "sourceMap": true,
+        "removeComments": true, 
+        "sourceMap": false,
 
         // Interop Constraints
         "esModuleInterop": true,
 
         // Language and Environment
-        "target": "ESNext"
+        "target": "ESNext",
+
+        // Completeness
+        "skipLibCheck": true
     }
 }
