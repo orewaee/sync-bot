@@ -6,6 +6,8 @@ import getMemberId from "../utils/getMemberId";
 import getMemberName from "../utils/getMemberName";
 
 export default async function ready() {
+    await bot.registerCommands();
+
     const
         donorGuild = bot.guilds.cache.get( donorGuildId ),
         members = await donorGuild.members.fetch();
